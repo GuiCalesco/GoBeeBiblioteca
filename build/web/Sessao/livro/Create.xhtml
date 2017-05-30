@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLivroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLivroLabel_idLivro}" for="idLivro" />
+                    <h:inputText id="idLivro" value="#{livroController.selected.idLivro}" title="#{bundle.CreateLivroTitle_idLivro}" required="true" requiredMessage="#{bundle.CreateLivroRequiredMessage_idLivro}"/>
+                    <h:outputLabel value="#{bundle.CreateLivroLabel_tituloLivro}" for="tituloLivro" />
+                    <h:inputText id="tituloLivro" value="#{livroController.selected.tituloLivro}" title="#{bundle.CreateLivroTitle_tituloLivro}" required="true" requiredMessage="#{bundle.CreateLivroRequiredMessage_tituloLivro}"/>
+                    <h:outputLabel value="#{bundle.CreateLivroLabel_autorLivro}" for="autorLivro" />
+                    <h:inputText id="autorLivro" value="#{livroController.selected.autorLivro}" title="#{bundle.CreateLivroTitle_autorLivro}" required="true" requiredMessage="#{bundle.CreateLivroRequiredMessage_autorLivro}"/>
+                    <h:outputLabel value="#{bundle.CreateLivroLabel_quantidadeEstoque}" for="quantidadeEstoque" />
+                    <h:inputText id="quantidadeEstoque" value="#{livroController.selected.quantidadeEstoque}" title="#{bundle.CreateLivroTitle_quantidadeEstoque}" required="true" requiredMessage="#{bundle.CreateLivroRequiredMessage_quantidadeEstoque}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{livroController.create}" value="#{bundle.CreateLivroSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{livroController.prepareList}" value="#{bundle.CreateLivroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLivroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

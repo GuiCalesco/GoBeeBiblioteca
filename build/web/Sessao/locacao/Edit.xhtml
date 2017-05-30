@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditLocacaoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditLocacaoLabel_locacaoPK_idLocacao}" for="locacaoPK_idLocacao" />
+                    <h:inputText disabled="true" id="locacaoPK_idLocacao" value="#{locacaoController.selected.locacaoPK.idLocacao}" title="#{bundle.EditLocacaoTitle_locacaoPK_idLocacao}" required="true" requiredMessage="#{bundle.EditLocacaoRequiredMessage_locacaoPK_idLocacao}"/>
+                    <h:outputLabel value="#{bundle.EditLocacaoLabel_dataRetirada}" for="dataRetirada" />
+                    <h:inputText disabled="true" id="dataRetirada" value="#{locacaoController.selected.dataRetirada}" title="#{bundle.EditLocacaoTitle_dataRetirada}" required="true" requiredMessage="#{bundle.EditLocacaoRequiredMessage_dataRetirada}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditLocacaoLabel_dataDevolucao}" for="dataDevolucao" />
+                    <h:inputText id="dataDevolucao" value="#{locacaoController.selected.dataDevolucao}" title="#{bundle.EditLocacaoTitle_dataDevolucao}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditLocacaoLabel_aluno}" for="aluno" />
+                    <h:selectOneMenu disabled="true" id="aluno" value="#{locacaoController.selected.aluno}" title="#{bundle.EditLocacaoTitle_aluno}" required="true" requiredMessage="#{bundle.EditLocacaoRequiredMessage_aluno}">
+                        <f:selectItems value="#{alunoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditLocacaoLabel_livro}" for="livro" />
+                    <h:selectOneMenu disabled="true" id="livro" value="#{locacaoController.selected.livro}" title="#{bundle.EditLocacaoTitle_livro}" required="true" requiredMessage="#{bundle.EditLocacaoRequiredMessage_livro}">
+                        <f:selectItems value="#{livroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{locacaoController.update}" value="#{bundle.EditLocacaoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditLocacaoViewLink}"/>
+                <br />
+                <h:commandLink action="#{locacaoController.prepareList}" value="#{bundle.EditLocacaoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditLocacaoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <h1><title>Sistema Biblioteca</title></h1>
+
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <h:body>
+        <h1><center>Bem vindo ao Sistema de Biblioteca</center></h1>
+        <hr></hr>
+        <br />
+        <table style="width:100%">
+            <tr>
+                <th>Opções Livro:</th>
+                <th>Opções Aluno:</th>
+                <th>Opções Livros:</th>
+            </tr>
+            <tr>
+                <td><h2><h:link outcome="/Sessao/locacao/Create" value="Locar livro"/></h2></td> 
+                <td><h2><h:link outcome="/Sessao/aluno/List" value="Ver Todos"/></h2></td>   
+                <td><h2><h:link outcome="/Sessao/livro/List" value="Ver Todos"/></h2></td>   
+            </tr>
+            <tr>
+                <td><h2><h:link outcome="/Sessao/locacao/List_1" value="Devolver livro"/></h2></td>   
+                <td><h2><h:link outcome="/Sessao/aluno/Create" value="Cadastrar"/></h2></td>
+                <td><h2><h:link outcome="/Sessao/livro/Create" value="Cadastrar"/></h2></td>                
+            </tr>
+            <tr>
+                <td><h2><h:link outcome="/Sessao/locacao/List" value="Ver historico"/></h2></td> 
+                <td></td>
+                <td></td>
+            </tr>                 
+        </table>
+
+    </h:body>
+
+
+
+</html>
+

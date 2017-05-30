@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h1><h:outputText value="#{bundle.EditAlunoTitle}"></h:outputText></h1>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAlunoLabel_idAluno}" for="idAluno" />
+                    <h:inputText id="idAluno" value="#{alunoController.selected.idAluno}" title="#{bundle.EditAlunoTitle_idAluno}" required="true" requiredMessage="#{bundle.EditAlunoRequiredMessage_idAluno}"/>
+                    <h:outputLabel value="#{bundle.EditAlunoLabel_nomeAluno}" for="nomeAluno" />
+                    <h:inputText id="nomeAluno" value="#{alunoController.selected.nomeAluno}" title="#{bundle.EditAlunoTitle_nomeAluno}" required="true" requiredMessage="#{bundle.EditAlunoRequiredMessage_nomeAluno}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{alunoController.update}" value="#{bundle.EditAlunoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAlunoViewLink}"/>
+                <br />
+                <h:commandLink action="#{alunoController.prepareList}" value="#{bundle.EditAlunoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAlunoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

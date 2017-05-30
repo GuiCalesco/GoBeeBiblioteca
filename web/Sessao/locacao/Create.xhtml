@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateLocacaoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateLocacaoLabel_dataRetirada}" for="dataRetirada" />
+                    <h:inputText id="dataRetirada" value="#{locacaoController.selected.dataRetirada}" title="#{bundle.CreateLocacaoTitle_dataRetirada}" required="true" requiredMessage="#{bundle.CreateLocacaoRequiredMessage_dataRetirada}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateLocacaoLabel_aluno}" for="aluno" />
+                    <h:selectOneMenu id="aluno" value="#{locacaoController.selected.aluno}" title="#{bundle.CreateLocacaoTitle_aluno}" required="true" requiredMessage="#{bundle.CreateLocacaoRequiredMessage_aluno}">
+                        <f:selectItems value="#{alunoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateLocacaoLabel_livro}" for="livro" />
+                    <h:selectOneMenu id="livro" value="#{locacaoController.selected.livro}" title="#{bundle.CreateLocacaoTitle_livro}" required="true" requiredMessage="#{bundle.CreateLocacaoRequiredMessage_livro}">
+                        <f:selectItems value="#{livroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{locacaoController.create}" value="#{bundle.CreateLocacaoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{locacaoController.prepareList}" value="#{bundle.CreateLocacaoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateLocacaoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
