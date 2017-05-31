@@ -98,13 +98,29 @@ public class LocacaoController implements Serializable {
         return "Edit";
     }
 
-    public String update() {
-        try {
+    public String create() {
+        try {            
             current.getLocacaoPK().setLivroidLivro(current.getLivro().getIdLivro());
             current.getLocacaoPK().setAlunoidAluno(current.getAluno().getIdAluno());
-            getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("LocacaoUpdated"));
-            return "View";
+            //id = current.getLocacaoPK().getLivroidLivro();
+            //if(current.getDataDevolucao()==null){
+                //if (livro1.getSelected().getQuantidadeEstoque()>0){
+                    //livro1.getLivro(id).setQuantidadeEstoque(livro1.getSelected().getQuantidadeEstoque()-1);
+                    //livro1.update();
+                    getFacade().create(current);
+                    JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("LocacaoCreated"));
+                    return prepareCreate();
+                //}else{
+                    //JsfUtil.addErrorMessage("Esse livro nao esta disponivel");
+                    //return "Create";
+                //}
+            //}else if(current.getDataDevolucao()!=null){
+                    //livro1.getLivro(id).setQuantidadeEstoque(livro1.getQuantidadeEstoque()+1);
+                    //livro1.update();
+                    //getFacade().create(current);
+                    //JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("LocacaoCreated"));
+                    //return prepareCreate();
+            //}
         } catch (Exception e) {
             JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             return null;
